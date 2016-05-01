@@ -1,3 +1,4 @@
+var webpack    = require("webpack");
 var HTMLPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -34,8 +35,7 @@ module.exports = {
   },
 
   plugins: [
-    new HTMLPlugin({
-      title: "Stepper",
-    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new HTMLPlugin({ title: "Stepper" }),
   ]
 };
