@@ -1,6 +1,8 @@
 Stepper
 =======
 
+[![Build Status](https://travis-ci.org/lpil/stepper.svg?branch=master)](https://travis-ci.org/lpil/stepper)
+
 A little JS step sequencer.
 
 ```sh
