@@ -14,7 +14,7 @@ module.exports = function(config) {
 
     browsers: ["PhantomJS"],
     preprocessors: {
-      "src/**/*.js": ["webpack"],
+      "src/**/*.js":  ["webpack"],
       "test/**/*.js": ["webpack"],
     },
 
