@@ -8,8 +8,8 @@ module.exports = function(config) {
     frameworks: ["mocha", "chai"],
     colors:     true,
     files: [
-      "src/**/*_test.js",
-      "test/**/*_test.js",
+      "src/**/*test.js",
+      "test/**/*test.js",
     ],
 
     browsers: ["PhantomJS"],
