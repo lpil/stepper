@@ -1,9 +1,4 @@
-var babelPresets = [
-  "es2015",
-];
-var babelPlugins = [
-  "transform-object-assign",
-];
+var HTMLPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/main.js",
@@ -26,7 +21,10 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader",
-        query: { presets: babelPresets, plugins: babelPlugins },
+        query: {
+          presets: ["es2015"],
+          plugins: ["transform-object-assign"],
+        },
       },
       {
         test: /\.scss$/,
@@ -34,4 +32,10 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new HTMLPlugin({
+      title: "Stepper",
+    }),
+  ]
 };
