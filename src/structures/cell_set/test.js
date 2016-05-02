@@ -1,4 +1,4 @@
-import { toggle, member } from "."
+import { toggle, member } from ".";
 
 describe("toggle", () => {
   it("can switch ON a cell, without mutation", () => {

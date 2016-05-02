@@ -4,7 +4,6 @@ function cells(state = {}, action = undefined) {
   switch (action.type) {
     case "TOGGLE_CELL":
       return toggle(state, action.x, action.y);
-      break;
 
     default:
       return state;
