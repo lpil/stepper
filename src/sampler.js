@@ -3,12 +3,12 @@
 import "whatwg-fetch";
 
 const files = [
+  "samples/tr808/kick.mp3",
+  "samples/tr808/snare.mp3",
   "samples/tr808/clap.mp3",
   "samples/tr808/closed-hat.mp3",
-  "samples/tr808/cowbell.mp3",
-  "samples/tr808/kick.mp3",
   "samples/tr808/open-hat.mp3",
-  "samples/tr808/snare.mp3",
+  "samples/tr808/cowbell.mp3",
 ];
 
 function sampleName(path) {
