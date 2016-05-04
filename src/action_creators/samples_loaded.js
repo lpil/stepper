@@ -1,6 +1,7 @@
-function samplesLoaded() {
+function samplesLoaded(samples) {
   return {
     type: "SAMPLES_LOADED",
+    samples,
   };
 }
 
