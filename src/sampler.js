@@ -22,17 +22,12 @@ function loadSamples(ctx, cb) {
       .then(res  => res.arrayBuffer()
       .then(arr  => ctx.decodeAudioData(arr)
       .then(data => { return { path, data }; }))))
-  ).then(s => {
-    samples = s;
-    cb();
-  });
+  ).then(cb);
 }
 
-function play(ctx, i) {
-  const sample = samples[i];
-  if (!sample) { return false; }
+function play(ctx, buffer) {
   const player  = ctx.createBufferSource();
-  player.buffer = sample.data;
+  player.buffer = buffer;
   player.connect(ctx.destination);
   player.start();
 }
