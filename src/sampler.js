@@ -2,7 +2,6 @@
 
 import "whatwg-fetch";
 
-let samples;
 const files = [
   "samples/tr808/clap.mp3",
   "samples/tr808/closed-hat.mp3",
@@ -11,6 +10,12 @@ const files = [
   "samples/tr808/open-hat.mp3",
   "samples/tr808/snare.mp3",
 ];
+
+function sampleName(path) {
+  const segments = path.split("/");
+  const filename = segments[segments.length - 1];
+  return filename.split(".")[0];
+}
 
 function loadSamples(ctx, cb) {
   if (!ctx && !cb) {
@@ -21,7 +26,10 @@ function loadSamples(ctx, cb) {
       .map(path  => fetch(path)
       .then(res  => res.arrayBuffer()
       .then(arr  => ctx.decodeAudioData(arr)
-      .then(data => { return { path, data }; }))))
+      .then(data => {
+        const name = sampleName(path);
+        return { path, data, name };
+      }))))
   ).then(cb);
 }
 
@@ -32,4 +40,4 @@ function play(ctx, buffer) {
   player.start();
 }
 
-export { loadSamples, samples, play };
+export { loadSamples, play };
