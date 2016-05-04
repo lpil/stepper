@@ -27,17 +27,18 @@ function loadSamples(ctx, cb) {
       .then(res  => res.arrayBuffer()
       .then(arr  => ctx.decodeAudioData(arr)
       .then(data => {
+        const play = () => playBuffer(ctx, data);
         const name = sampleName(path);
-        return { path, data, name };
+        return { play, path, data, name };
       }))))
   ).then(cb);
 }
 
-function play(ctx, buffer) {
+function playBuffer(ctx, buffer) {
   const player  = ctx.createBufferSource();
   player.buffer = buffer;
   player.connect(ctx.destination);
   player.start();
 }
 
-export { loadSamples, play };
+export { loadSamples, playBuffer };
