@@ -1,12 +1,9 @@
-import * as sequencer from "./sequencer";
-import store from "./store";
+import samplesLoaded   from "./action_creators/samples_loaded";
+import { loadSamples } from "./sampler";
+import store           from "./store";
 
-import * as sampler from "./sampler";
-window.sampler = sampler;
+const audioContext = new AudioContext();
+const boundLoaded  = samples => store.dispatch(samplesLoaded(samples));
+loadSamples(audioContext, boundLoaded);
 
-const audioContext  = new AudioContext();
-window.audioContext = audioContext;
-
-window.run = function() {
-  sequencer.init(store, audioContext);
-};
+window.store = store;
