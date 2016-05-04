@@ -10,8 +10,14 @@ function applyAfter(cb, args, ctx, applyDelay) {
   applyAt(cb, args, ctx, ctx.currentTime + applyDelay);
 }
 
+//
+// Returns an object containing functions to adjust the
+// interval at which the function is applied, and a function
+// to cancel the iteration.
+//
 function applyEvery(cb, args, ctx, applyInterval) {
   let loop = true;
+  const setInterval = (n) => { applyInterval = n; };
   const cancel = () => { loop = false; };
   const looper = (...cbArgs) => {
     if (loop) {
@@ -21,7 +27,7 @@ function applyEvery(cb, args, ctx, applyInterval) {
     }
   };
   applyAt(looper, args, ctx, ctx.currentTime + applyInterval);
-  return cancel;
+  return { cancel, setInterval };
 }
 
 export { applyAt, applyAfter, applyEvery };
