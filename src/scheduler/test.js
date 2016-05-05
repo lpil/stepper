@@ -83,13 +83,38 @@ describe("applyEvery", () => {
       acc.push(x);
       return [x + 1];
     };
-    const cancel = applyEvery(add, [1], ctx, 1);
+    const { cancel } = applyEvery(add, [1], ctx, 1);
     cancel();
 
     setTimeout(() => {
       ctx.currentTime = 100;
       expect(acc).to.deep.equal([]);
       done();
+    }, 20);
+  });
+
+  it("returns a setInterval function that alters iteration rate", (done) => {
+    let acc = [];
+    const ctx = { currentTime: 0 };
+    const add = (x) => {
+      acc.push(x);
+      return [x + 1];
+    };
+    const { setInterval } = applyEvery(add, [1], ctx, 1);
+
+    setInterval(5); // Change is applied after next iteration
+    ctx.currentTime = 1;
+    setTimeout(() => {
+      expect(acc).to.deep.equal([1]);
+      ctx.currentTime = 2;
+      setTimeout(() => {
+        expect(acc).to.deep.equal([1]);
+        ctx.currentTime = 7;
+        setTimeout(() => {
+          expect(acc).to.deep.equal([1, 2]);
+          done();
+        }, 20);
+      }, 20);
     }, 20);
   });
 });
