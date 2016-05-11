@@ -19,6 +19,6 @@ module.exports = function(config) {
     },
 
     webpack: require("./webpack.config.js"),
-    webpackMiddleware: { quiet: true },
+    webpackMiddleware: { noInfo: true },
   });
 };
