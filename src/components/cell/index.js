@@ -1,18 +1,19 @@
+import "./style.scss";
 import React, { PropTypes } from "react";
 
-const Cell = ({ on, onClick, x, y }) => {
+const Cell = ({ isOn, onClick, x, y }) => {
   const properties = {
     className: "cell",
     onClick: function() { onClick(x, y); },
   };
-  if (on) {
+  if (isOn(x, y)) {
     properties.style = { backgroundColor: "hotpink" };
   }
   return <div {...properties}></div>;
 };
 
 Cell.propTypes = {
-  on: PropTypes.bool,
+  isOn: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,

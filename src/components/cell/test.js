@@ -4,7 +4,7 @@ import Cell      from ".";
 
 function setup(on = true) {
   const props = {
-    on: on, onClick: function() {}, x: 64, y: 32,
+    isOn: () => on, onClick: function() {}, x: 64, y: 32,
   };
   const renderer = TestUtils.createRenderer();
   renderer.render(<Cell {...props} />);
