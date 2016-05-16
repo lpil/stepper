@@ -9,13 +9,11 @@ module.exports = function(config) {
     colors:     true,
     files: [
       "src/**/*test.js",
-      "test/**/*test.js",
     ],
 
     browsers: ["PhantomJS"],
     preprocessors: {
       "src/**/*.js":  ["webpack"],
-      "test/**/*.js": ["webpack"],
     },
 
     webpack: require("./webpack.config.js"),
