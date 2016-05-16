@@ -15,8 +15,11 @@ function playStep(step, store) {
   return [next, store];
 }
 
-function init(store, ctx) {
-  return applyEvery(playStep, [0, store], ctx, 60 / bpm);
+function init({ store, audioContext }) {
+  if (!store || !audioContext) {
+    throw "Store and AudioContext required by sequencer";
+  }
+  return applyEvery(playStep, [0, store], audioContext, 60 / bpm);
 }
 
 export { init };

@@ -6,10 +6,14 @@ import samplesLoaded   from "./action_creators/samples_loaded";
 import { loadSamples } from "./sampler";
 import store           from "./store";
 import ConnectedCell   from "./containers/connected_cell";
+import * as sequencer  from  "./sequencer";
 
 const audioContext = new AudioContext();
-const boundLoaded  = samples => store.dispatch(samplesLoaded(samples));
-loadSamples(audioContext, boundLoaded);
+const handleLoaded = (samples) => {
+  store.dispatch(samplesLoaded(samples));
+  sequencer.init({ store, audioContext });
+};
+loadSamples(audioContext, handleLoaded);
 
 document.writeln("<main/>");
 
