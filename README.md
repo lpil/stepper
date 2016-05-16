@@ -6,6 +6,11 @@ Stepper
 A little JS step sequencer.
 
 ```sh
+cd /path/to/stepper
+
+# Install the deps
+npm install
+
 # Run the test runner
 npm test
 
