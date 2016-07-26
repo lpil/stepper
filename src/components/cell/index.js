@@ -8,7 +8,7 @@ const Cell = ({ step, isOn, onClick, x, y }) => {
     style: {},
   };
   if (step === x) {
-    properties.style.backgroundColor = "#d8428d";
+    properties.style.backgroundColor = "#ddd";
   }
   if (isOn(x, y)) {
     properties.style.backgroundColor = "hotpink";

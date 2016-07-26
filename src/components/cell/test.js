@@ -26,8 +26,8 @@ describe("Cell component", () => {
 
   it("sets the colour depending on the `step` prop", () => {
     const out1 = setup({ on: false, step: 2, x: 2 }).output;
-    expect(out1.props.style).to.deep.equal({ backgroundColor: "#d8428d"});
+    expect(out1.props.style.backgroundColor).not.to.equal(undefined);
     const out2 = setup({ on: false, step: 3, x: 2 }).output;
-    expect(out2.props.style).to.deep.equal({});
+    expect(out2.props.style.backgroundColor).to.equal(undefined);
   });
 });
