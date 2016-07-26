@@ -2,7 +2,7 @@
 
 import "whatwg-fetch";
 
-const files = [
+let files = [
   "samples/tr808/kick.mp3",
   "samples/tr808/snare.mp3",
   "samples/tr808/clap.mp3",
@@ -10,6 +10,11 @@ const files = [
   "samples/tr808/open-hat.mp3",
   "samples/tr808/cowbell.mp3",
 ];
+
+if (window.location.hostname !== "localhost") {
+  files = files.map(path =>
+    `https://raw.githubusercontent.com/lpil/stepper/master/${path}`);
+}
 
 function sampleName(path) {
   const segments = path.split("/");
