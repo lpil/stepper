@@ -1,8 +1,9 @@
 import { applyEvery } from "./scheduler";
 import { member }     from "./structures/cell_set";
+import { NUM_STEPS } from "./config";
 
-const steps = 16;
-const bpm   = 120;
+const steps = NUM_STEPS;
+const bpm   = 144;
 
 function playStep(step, store) {
   const state   = store.getState();
