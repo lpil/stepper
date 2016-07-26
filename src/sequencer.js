@@ -3,7 +3,8 @@ import { member }     from "./structures/cell_set";
 import { NUM_STEPS }  from "./config";
 import incStep        from "./action_creators/inc_step";
 
-const bpm = 144;
+const bpm = 120;
+const spm = bpm * 2;
 
 function playStep(store) {
   store.dispatch(incStep());
@@ -21,7 +22,7 @@ function init({ store, audioContext }) {
   if (!store || !audioContext) {
     throw "Store and AudioContext required by sequencer";
   }
-  return applyEvery(playStep, [store], audioContext, 60 / bpm);
+  return applyEvery(playStep, [store], audioContext, 60 / spm);
 }
 
 export { init };
